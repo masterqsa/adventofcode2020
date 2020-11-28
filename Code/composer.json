@@ -1,0 +1,10 @@
+{
+    "require": {
+        "hhvm/hhvm-autoload": "^3.1",
+        "hhvm/hsl-experimental": "^4.66",
+        "hhvm/hsl": "^4.41"
+    },
+    "require-dev": {
+        "hhvm/hhast": "^4.84"
+    }
+}
