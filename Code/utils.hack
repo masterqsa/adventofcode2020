@@ -27,19 +27,19 @@ function init_2d_array<T>(
 }
 
 function min_max(
-    Traversable<T> $numbers,
-): (number, number) {
-  return tuple(Math\min($numbers), Math\max($numbers));
+    Traversable<num> $numbers,
+): (num, num) {
+  return tuple(Math\min($numbers) ?? 0, Math\max($numbers) ?? 0);
 }
 
 function max_minus_min(
-    Traversable<T> $numbers,
-): number {
-    return Math\min($numbers) - Math\max($numbers);
+    Traversable<num> $numbers,
+): num {
+    return (Math\min($numbers) ?? 0) - (Math\max($numbers) ?? 0);
 }
 
-function flatten(
-    Traversable<Traversable<T>> $matrix,
+function flatten<T>(
+    Traversable<Container<T>> $matrix,
 ): Traversable<T> {
     return Vec\flatten($matrix);
 }
@@ -47,10 +47,11 @@ function flatten(
 function words(
     string $s,
 ): vec<string> {
-    return Vec\flatten(Regex\every_match($s, re"/[a-zA-Z]+/"));
+    $matches = Regex\every_match($s, re"/[a-zA-Z]+/");
+    return /* HH_IGNORE_ERROR[4110] */ Vec\flatten($matches);
 }
 
-function hamming_distance(
+function hamming_distance<T>(
     Traversable<T> $x,
     Traversable<T> $y,
 ): int {
@@ -61,9 +62,9 @@ function hamming_distance(
     );
 }
 
-function edit_distance(
-    Traversable<T> $a,
-    Traversable<T> $b,
+function edit_distance<T>(
+    vec<T> $a,
+    vec<T> $b,
 ): int {
     $n = C\count($a);
     $m = C\count($b);
@@ -72,10 +73,10 @@ function edit_distance(
     return edit_distance_aux($dp, $a, $b, 0, 0);
 }
 
-function edit_distance_aux(
-    vec<vec<int>> $dp,
-    Traversable<T> $a,
-    Traversable<T> $b,
+function edit_distance_aux<T>(
+    vec<vec<?int>> $dp,
+    vec<T> $a,
+    vec<T> $b,
     int $i,
     int $j,
 ): int {
@@ -85,7 +86,7 @@ function edit_distance_aux(
     assert(0<=$j && $j<=$m);
 
     if ($dp[$i][$j] is nonnull) {
-        return $dp[$i][$j];
+        return $dp[$i][$j] ?? 0;
     }
 
     if ($i === $n) {
@@ -95,14 +96,14 @@ function edit_distance_aux(
     } else {
         $dp[$i][$j] = Math\min(
             vec[
-                ($a[$i] === $b[$j] ? 0 : 1) + edit_distance_aux($dp, $a, $b, $i + 1, $j + 1),
+                ($a[$i] == $b[$j] ? 0 : 1) + edit_distance_aux($dp, $a, $b, $i + 1, $j + 1),
                 1 + edit_distance_aux($dp, $a, $b, $i + 1, $j),
                 1 + edit_distance_aux($dp, $a, $b, $i, $j + 1),
             ]
         );
     }
 
-    return $dp[$i][$j];
+    return $dp[$i][$j] ?? 0;
 }
 
 

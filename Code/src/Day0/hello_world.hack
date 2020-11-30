@@ -10,6 +10,10 @@ async function main(): Awaitable<void> {
 
   print( "Hello world!\n\n" );
 
+  $checks = new MainChecks();
+  await $checks->RunLite();
+  await $checks->Run();
+
   $values = vec[];
   $float_values = vec[];
   $f = File\open_read_only(__DIR__."/../../input.txt");
@@ -34,6 +38,7 @@ async function main(): Awaitable<void> {
 
   print("\n\n");
 
+  /* HH_IGNORE_ERROR[4110] */ 
   print(Str\join(min_max($float_values),"--")."\n");
 
   // STDIN for CLI, or HTTP POST data
