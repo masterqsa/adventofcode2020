@@ -12,7 +12,6 @@ async function main(): Awaitable<void> {
 
   $checks = new MainChecks();
   await $checks->RunLite();
-  await $checks->Run();
 
   $values = vec[];
   $float_values = vec[];
@@ -25,10 +24,8 @@ async function main(): Awaitable<void> {
   }
   print("\n\n");
 
-  print("Hamming distance: ".hamming_distance($values, Vec\reverse($values))."\n");
+  await $checks->Run($values, $float_values);
 
-  print("Edit distance: ".edit_distance($values, Vec\reverse($values))."\n");
-  print("Edit distance: ".edit_distance(vec[1,2,3,4], vec[1,2,5,6,7])."\n");
 
   print($s."\n");
   
@@ -37,9 +34,6 @@ async function main(): Awaitable<void> {
   }
 
   print("\n\n");
-
-  /* HH_IGNORE_ERROR[4110] */ 
-  print(Str\join(min_max($float_values),"--")."\n");
 
   // STDIN for CLI, or HTTP POST data
   $_in = IO\request_input();
@@ -61,4 +55,8 @@ async function main(): Awaitable<void> {
     $content = await $f->readAsync();
     await $out->writeAllAsync($content);
   }
+
+  $uf = new UnionFind(5);
+  $uf->merge(1, 2);
+  print(($uf->in_same_set(1,2) ? "true":"false").", ".($uf->in_same_set(1,3) ? "true":"false").", ".$uf->num_sets.".\n");
 }
