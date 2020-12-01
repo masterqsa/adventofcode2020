@@ -19,7 +19,7 @@ private static $installed = array (
     'aliases' => 
     array (
     ),
-    'reference' => 'c880a905a617ae6fc74eca0159b1c16b6a8e5282',
+    'reference' => '3f7bf4ddb7cb2dc7a7ae9a8e191ec77a6743e3d3',
     'name' => '__root__',
   ),
   'versions' => 
@@ -31,7 +31,7 @@ private static $installed = array (
       'aliases' => 
       array (
       ),
-      'reference' => 'c880a905a617ae6fc74eca0159b1c16b6a8e5282',
+      'reference' => '3f7bf4ddb7cb2dc7a7ae9a8e191ec77a6743e3d3',
     ),
     'facebook/difflib' => 
     array (
@@ -41,6 +41,15 @@ private static $installed = array (
       array (
       ),
       'reference' => 'b697c0ac436629c8cd9627ab31a60777431f72f6',
+    ),
+    'facebook/fbexpect' => 
+    array (
+      'pretty_version' => 'v2.7.7',
+      'version' => '2.7.7.0',
+      'aliases' => 
+      array (
+      ),
+      'reference' => 'dcf1beb1b9e264396495aa120a3752fddfbeca95',
     ),
     'facebook/hh-clilib' => 
     array (
@@ -57,6 +66,15 @@ private static $installed = array (
       array (
         0 => '1.*',
       ),
+    ),
+    'hhvm/hacktest' => 
+    array (
+      'pretty_version' => 'v2.2.0',
+      'version' => '2.2.0.0',
+      'aliases' => 
+      array (
+      ),
+      'reference' => 'aa2167eb5ed52d8a8e437272f9474a86103a50ca',
     ),
     'hhvm/hhast' => 
     array (

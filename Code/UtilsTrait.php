@@ -125,4 +125,31 @@ public static function edit_distance_aux<T>(
     return $dp[$i][$j] ?? 0;
 }
 
+public static function parseSamples(
+    Traversable<string> $input,
+): vec<string> {
+    return Vec\filter($input, $s ==> $s is nonnull && $s !== '');
+}
+
+public static function runSamplesAndActual(
+    Traversable<string> $samples,
+    string $actual,
+    (function(string): string) $do_case,
+): void {
+    $p = static::parseSamples($samples);
+    foreach($p as $sample) {
+        print('running '.Str\slice($sample, 0, 100).":\n");
+        print(Str\repeat('-', 10)."\n");
+        print($do_case($sample)."\n");
+        print(Str\repeat('-', 10)."\n");
+        print(Str\repeat('#', 10)."\n");
+    }
+    if (!Str\is_empty($actual)) {
+        print("!! running actual !!");
+        print(Str\repeat('-', 10)."\n");
+        print($do_case($actual)."\n");
+        print(Str\repeat('-', 10)."\n");
+    }
+}
+
 }

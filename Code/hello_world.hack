@@ -4,18 +4,18 @@ use namespace HH\Lib\{C, File, IO, Str, Math, Regex, Vec};
 
 <<__EntryPoint>>
 async function main(): Awaitable<void> {
-  require_once(__DIR__.'/../../vendor/autoload.hack');
+  require_once(__DIR__.'/vendor/autoload.hack');
   \Facebook\AutoloadMap\initialize();
-  require_once(__DIR__.'/../../utils.hack');
+  require_once(__DIR__.'/utils.hack');
 
   print( "Hello world!\n\n" );
 
   $checks = new MainChecks();
-  await $checks->RunLite();
+  await $checks->runLite();
 
   $values = vec[];
   $float_values = vec[];
-  $f = File\open_read_only(__DIR__."/../../input.txt");
+  $f = File\open_read_only(__DIR__."/input.txt");
   $s = await $f->readAsync();
   foreach(Str\split($s, "\n") as $line) {
     print($line.", ");
@@ -24,7 +24,7 @@ async function main(): Awaitable<void> {
   }
   print("\n\n");
 
-  await $checks->Run($values, $float_values);
+  await $checks->run($values, $float_values);
 
 
   print($s."\n");
