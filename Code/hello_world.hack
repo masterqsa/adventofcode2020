@@ -3,7 +3,7 @@ namespace AOC2020;
 use namespace HH\Lib\{C, File, IO, Str, Math, Regex, Vec};
 
 <<__EntryPoint>>
-async function main(): Awaitable<void> {
+async function main_async(): Awaitable<void> {
   require_once(__DIR__.'/vendor/autoload.hack');
   \Facebook\AutoloadMap\initialize();
   require_once(__DIR__.'/utils.hack');

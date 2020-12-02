@@ -145,7 +145,7 @@ public static function runSamplesAndActual(
         print(Str\repeat('#', 10)."\n");
     }
     if (!Str\is_empty($actual)) {
-        print("!! running actual !!");
+        print("!! running actual !!\n");
         print(Str\repeat('-', 10)."\n");
         print($do_case($actual)."\n");
         print(Str\repeat('-', 10)."\n");
