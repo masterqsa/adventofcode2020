@@ -33,6 +33,15 @@ $sample3 = null;
         $count = 0;
         //print(C\count($lines));
         foreach($lines as $line) {
+            $matches = Regex\every_match($line, re"/([0-9]+)\-([0-9]+) ([a-z]+): ([a-z]+)/");
+            Vec\flatten($matches);
+            foreach($matches as $match){
+                foreach($match as $e){
+                    print($e." ");
+                }
+            }
+            print("\n");
+            
             $parts = Str\split($line, " ");
             $policy = $parts[0];
             $policy_parts = Str\split($policy,"-");
