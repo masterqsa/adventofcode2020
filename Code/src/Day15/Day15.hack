@@ -44,7 +44,7 @@ $sample3 = "2,1,3";
         //part 1
         $limit = 2020;
         //part 2
-        $limit = 30000000
+        $limit = 30000000;
         for(;$count<$limit;$count++) {            
             $entry = $this->nums[$last_num];
             //print($last_num." => ".$entry[0]." ".$entry[1]."\n");
@@ -57,7 +57,6 @@ $sample3 = "2,1,3";
             //print($last_num."\n");
         }
         print("last num: ".$last_num."\n");
-        //7 is wrong
         return "".$count;
     }
 
