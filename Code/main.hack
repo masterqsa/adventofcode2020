@@ -7,7 +7,7 @@ async function main(): Awaitable<void> {
     require_once(__DIR__.'/vendor/autoload.hack');
     \Facebook\AutoloadMap\initialize();
 
-    $current_day = new Day18();
+    $current_day = new Day19();
 
     await $current_day->runProcessing();
 
