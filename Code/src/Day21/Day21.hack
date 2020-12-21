@@ -92,20 +92,6 @@ $sample3 = null;
             }
         }
 
-        foreach($this->allergens_ingred as $a => $i) {
-            if (C\count($i) > 1) {
-                print("More than one ingredient for allergen ".$a."\n");
-                foreach ($i as $ing) {
-                    print($ing.", ");
-                }
-                print("\n");
-            } else {
-                foreach ($i as $ing) {
-                    $used[] = $ing;
-                }
-            }
-        }
-
         foreach($this->ingredients as $ing => $c) {
             if (!C\contains_key($used, $ing)) {
                 print("non-used: ".$ing."\n");
