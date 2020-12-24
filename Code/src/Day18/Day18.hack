@@ -17,7 +17,9 @@ final class Day18 {
 $sample1 = <<<EOD
 1 + 2 * 3 + 4 * 5 + 6
 EOD;
-$sample2 = null;
+$sample2 = <<<EOD
+8 * 8 * 8 * 6 + (6 + 4 + 6 * 2 * 3) + 5
+EOD;
 $sample3 = null;
         static::runSamplesAndActual(
             vec[$sample1, $sample2, $sample3],
@@ -55,7 +57,7 @@ $sample3 = null;
             $pos = Str\search($line, '+');
             $leftpart = Str\slice($line,0,$pos);
             $rightpart = Str\slice($line,$pos+1);
-            print($leftpart." / ".$rightpart."\n");
+            //print($leftpart." / ".$rightpart."\n");
             $line = $this->findPosLeft($leftpart).'-'.$this->findPosRight($rightpart);
         }
         return Str\replace($line, '-', '+');
